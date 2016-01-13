@@ -1,0 +1,1 @@
+bookInv/bookInv/static/functions.js

@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block content %}
+	{% for book in books %}
+	<tr>
+		<td colspan="3"><input type="checkbox" id="{{ book.id }}" class="books"> 
+			<label for="{{ book.id }}"> 
+				<span class="author">{{ book.author|capfirst }}</span>
+				<span class="title">{{ book.title|capfirst }}</span>
+				<span class="location">{{ book.location|capfirst }}</span>
+			</label>
+		</td>
+	</tr>
+	{% endfor %}
+{% endblock %}
+
+{% block locations %}
+	{% for location in locations %}
+		<option value="{{ location.name }}">{{ location.name|capfirst }}</option>
+	{% endfor %}
+{% endblock %}

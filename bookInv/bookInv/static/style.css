@@ -1,0 +1,130 @@
+/**
+ * This is all preliminary to get a mockup. 
+ * Will be made responsive once the design is 
+ * finalized.
+ */
+
+/* Add Book form */
+#addBookForm {
+	height: 150px;
+	width: 300px;
+	background-color: rgba(245, 245, 245, 0.95);
+	border-radius: 10px;
+	position: absolute;
+	z-index: 10;
+	top: -900px;
+	transition: top 0.3s;
+	padding: 20px;
+	box-shadow: 3px 3px 3px #CCC, -3px 3px 3px #CCC;
+}
+
+/* The entire page */
+body {
+	margin: 20px auto;
+	width: 800px;
+}
+
+/* Header */
+#header {
+	width: 100%;
+	margin: 10px auto;
+}
+
+/* addBook is the ID of the "Add Book" button. */
+#addBook {
+	display: inline-block;
+	font-weight: bolder;
+	font-size: 12px;
+	background-color: #DDD;
+	text-decoration: none;
+	text-transform: uppercase;
+	color: #888;
+	padding: 3px 5px;
+	border-radius: 5px;
+	transition: background-color 0.2s, color 0.2s;
+	cursor: pointer;
+}
+
+#addBook:hover {
+	color: #DDD;
+	background-color: #888;
+}
+
+
+/* display is the ID of the pseudo-listbox that displays books. */
+#display {
+	table-layout: fixed;
+	width: 500px;
+	margin: 0;
+	padding: 0;
+	border-collapse: collapse;
+}
+#display tr, #display td, #display th {
+	border-bottom: 1px solid lightgrey;
+	padding: 0;
+}
+
+#display th {
+	text-transform: uppercase;
+	background-color: white;
+}
+
+#display tr:nth-child(even) {
+	background-color: #EFEFEF;
+}
+
+#display tr:hover {
+	background-color: #DDDDFF;
+}
+
+label {
+	height: 100%;
+	display: inline;
+}
+
+input[type="checkbox"] {
+	display: none;
+}
+
+input[type="checkbox"]:checked + label {
+	background-color: lightblue;
+}
+
+
+/* This span refers to the non-header pseudo-cells of the display table:
+ * They are spaced to simulated columns. The classes that immediately
+ * follow are each of the "columns". */
+span {
+	height: 100%;
+	width: 100%;
+	display: inline-block;
+	vertical-align: top;
+}
+
+.author {
+	width: 30%;
+	padding-left: 10px;
+}
+
+.title {
+	width: 30%;
+	padding-left: 10px;
+	padding-right: 10px;
+	font-style: italic;
+}
+
+.location {
+	width: 30%;
+	padding-right: 10px;
+}
+
+/* Form errors */
+.errorlist {
+	color: red;
+	list-style: none;
+	font-size: 90%;
+	line-height: 0;
+	position: relative;
+	left: 10px;
+	top: 5px;
+}
