@@ -3,11 +3,12 @@
 {% block content %}
 	{% for book in books %}
 	<tr>
-		<td colspan="3"><input name="selectedBooks" type="checkbox" id="{{ book.id }}" value="{{ book.id }}" class="books" onclick="bookClicked()"> 
+		<td colspan="4"><input name="selectedBooks" type="checkbox" id="{{ book.id }}" value="{{ book.id }}" class="books" onclick="bookClicked()"> 
 			<label class="labelBooks" for="{{ book.id }}"> 
 				<span class="author">{{ book.author|capfirst }}</span>
 				<span class="title">{{ book.title|capfirst }}</span>
 				<span class="location">{{ book.location|capfirst }}</span>
+				<span class="read">{% if book.read %}&#x2713{% endif %}</span>
 			</label>
 		</td>
 	</tr>

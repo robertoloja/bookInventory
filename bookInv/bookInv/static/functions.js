@@ -14,6 +14,7 @@ function selectAllBooks() {
 	for (var i = 0; i < checks.length; i++) {
 		checks[i].checked = true;
 	}
+	bookClicked();
 }
 
 function deselectAllBooks() {
@@ -22,14 +23,13 @@ function deselectAllBooks() {
 	for (var i = 0; i < checks.length; i++) {
 		checks[i].checked = false;
 	}
+	bookClicked();
 }
 
 function bookClicked() {
 	var num = document.querySelectorAll('input[type="checkbox"]:checked').length;
 	var modButton = document.getElementById("modifyBook");
 	var delButton = document.getElementById("deleteBook");
-	var selectAll = document.getElementById("selectAll");
-	var deselectAll = document.getElementById("deselectAll");
 
 	if (num == 0) {
 		modButton.style.visibility = "hidden";
@@ -38,8 +38,6 @@ function bookClicked() {
 		delButton.style.visibility = "hidden";
 		delButton.style.opacity = "0";
 
-		selectAll.style.display = "none";
-		deselectAll.style.display = "none";
 	} else if (num == 1) {
 		modButton.style.visibility = "visible";
 		modButton.style.opacity = "1";
@@ -47,17 +45,12 @@ function bookClicked() {
 		delButton.style.visibility = "visible";
 		delButton.style.opacity = "1";
 
-		selectAll.style.display = "block";
-		deselectAll.style.display = "block";
 	} else if (num > 1) {
 		delButton.style.visibility = "visible";
 		delButton.style.opacity = "1";
 
 		modButton.style.visibility = "hidden";
 		modButton.style.opacity = "0";
-
-		selectAll.style.display = "block";
-		deselectAll.style.display = "block";
 	}
 }
 

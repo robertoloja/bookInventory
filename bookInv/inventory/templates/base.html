@@ -14,7 +14,7 @@
 			 revert to being off-page on page reload. -->
 		<div id="addBookForm" 
 				{% if form.errors %}
-					style="top: 10px; height: 190px;"
+					style="top: 10px; height: 225px;"
 				{% endif %} 
 				>
 			<span id="close" onclick="closeBookForm()" title="Close"
@@ -53,6 +53,7 @@
 					<th class="authorHead">Author</th>
 					<th class="titleHead">Title</th>
 					<th class="locationHead">Location</th>
+					<th class="readHead">Read</th>
 				</tr>
 
 				{% block content %}
