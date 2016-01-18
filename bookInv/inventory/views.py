@@ -23,3 +23,15 @@ def index(request):
         'locations': locations,
         'form': form,
         })
+
+def modifyBook(request):
+    print(request.POST.getlist('selectedBooks'))
+    if request.POST.get('deleteModify') == 'delete':
+        return deleteBook(request)
+    else:
+        return render(request, 'inventory/modify.html')
+
+def deleteBook(request):
+    for bookId in request.POST.getlist('selectedBooks'):
+        Book.objects.get(id=bookId).delete()
+    return HttpResponseRedirect("/")

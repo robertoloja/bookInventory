@@ -8,20 +8,21 @@
 #addBookForm {
 	height: 150px;
 	width: 300px;
-	background-color: rgba(245, 245, 245, 0.95);
+	background-color: rgba(245, 245, 245, 0.98);
 	border-radius: 10px;
-	position: absolute;
+	position: fixed;
 	z-index: 10;
 	top: -900px;
-	transition: top 0.3s;
+	transition: top 0.5s;
 	padding: 20px;
 	box-shadow: 3px 3px 3px #CCC, -3px 3px 3px #CCC;
+	margin-left: 60px;
 }
 
 /* The entire page */
 body {
 	margin: 20px auto;
-	width: 800px;
+	width: 600px;
 }
 
 /* Header */
@@ -31,23 +32,40 @@ body {
 }
 
 /* addBook is the ID of the "Add Book" button. */
-#addBook {
+.bookButton, input[type="submit"] {
 	display: inline-block;
 	font-weight: bolder;
-	font-size: 12px;
+	font-size: 14px;
 	background-color: #DDD;
 	text-decoration: none;
 	text-transform: uppercase;
 	color: #888;
-	padding: 3px 5px;
-	border-radius: 5px;
+	padding: 3px 9px;
+	border-radius: 7px;
 	transition: background-color 0.2s, color 0.2s;
 	cursor: pointer;
+	border: none;
 }
 
-#addBook:hover {
+.bookButton:hover, input[type="submit"]:hover {
 	color: #DDD;
 	background-color: #888;
+}
+
+#deleteBook, #modifyBook {
+	margin-top: 10px;
+	margin-left: 8px;
+	visibility: hidden;
+	opacity: 0;
+	transition: opacity 0.3s, background-color 0.2s;
+}
+
+#deleteBook:hover {
+	background-color: #FE2E2E;
+}
+
+.backToHidden {
+	transition: visibility 0.3s;
 }
 
 
@@ -57,6 +75,7 @@ body {
 	width: 500px;
 	margin: 0;
 	padding: 0;
+	margin-top: 100px;
 	border-collapse: collapse;
 }
 #display tr, #display td, #display th {
@@ -87,35 +106,50 @@ input[type="checkbox"] {
 }
 
 input[type="checkbox"]:checked + label {
-	background-color: lightblue;
+	background-color: #3A778A;
+	color: white;
+	text-shadow: 1px 1px  2px black;
 }
 
 
 /* This span refers to the non-header pseudo-cells of the display table:
  * They are spaced to simulated columns. The classes that immediately
  * follow are each of the "columns". */
-span {
+.labelBooks {
 	height: 100%;
 	width: 100%;
 	display: inline-block;
 	vertical-align: top;
+	padding-top: 5px;
+	padding-bottom: 5px;
 }
 
-.author {
-	width: 30%;
+#display th.authorHead, #display th.titleHead, #display th.locationHead {
+	text-align: left;
 	padding-left: 10px;
 }
 
+.author {
+	display: inline-block;
+	width: 30%;
+	padding-left: 10px;
+	vertical-align: top;
+}
+
 .title {
+	display: inline-block;
 	width: 30%;
 	padding-left: 10px;
 	padding-right: 10px;
 	font-style: italic;
+	vertical-align: top;
 }
 
 .location {
+	display: inline-block;
 	width: 30%;
-	padding-right: 10px;
+	padding-left: 5px;
+	vertical-align: top;
 }
 
 /* Form errors */
@@ -127,4 +161,35 @@ span {
 	position: relative;
 	left: 10px;
 	top: 5px;
+}
+
+.nav {
+	margin-top: -20px;
+	padding-top: 20px;
+	width: 500px;
+	position: fixed;
+	background-color: white;
+	box-shadow: 0px 4px 3px -3px rgba(120, 120, 120, 0.9);
+	padding-bottom: 20px;
+	z-index: 2;
+}
+
+#selectAll {
+	display: none;
+	padding-left: 510px;
+	width: 100%;
+	position: fixed;
+	top: 138px;
+	cursor: pointer;
+	text-align: left;
+}
+
+#deselectAll {
+	display: none;
+	padding-left: 510px;
+	width: 100%;
+	position: fixed;
+	top: 160px;
+	cursor: pointer;
+	text-align: left;
 }

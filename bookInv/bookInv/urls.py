@@ -19,6 +19,6 @@ from inventory import views
 
 urlpatterns = [
     url(r'^$', views.index, name='index'),
-    #url(r'^addBook/', views.addBook, name='addBook'),
+    url(r'^modify/', views.modifyBook, name='modifyBook'),
     url(r'^admin/', admin.site.urls),
 ]
