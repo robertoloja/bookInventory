@@ -1,0 +1,216 @@
+/**
+ * This is all preliminary to get a mockup. 
+ * Will be made responsive once the design is 
+ * finalized.
+ */
+
+/* Add Book form */
+#addBookForm {
+	height: 180px;
+	width: 300px;
+	background-color: rgba(245, 245, 245, 0.98);
+	border-radius: 10px;
+	position: fixed;
+	z-index: 10;
+	top: -900px;
+	transition: top 0.5s;
+	padding: 20px;
+	box-shadow: 3px 3px 3px #CCC, -3px 3px 3px #CCC;
+	margin-left: 60px;
+}
+
+/* The entire page */
+body {
+	margin: 20px auto;
+	width: 600px;
+}
+
+/* Header */
+#header {
+	width: 100%;
+	margin: 10px auto;
+}
+
+/* addBook is the ID of the "Add Book" button. */
+.bookButton, input[type="submit"] {
+	display: inline-block;
+	font-weight: bolder;
+	font-size: 14px;
+	background-color: #DDD;
+	text-decoration: none;
+	text-transform: uppercase;
+	color: #888;
+	padding: 3px 9px;
+	border-radius: 7px;
+	transition: background-color 0.2s, color 0.2s;
+	cursor: pointer;
+	border: none;
+}
+
+.bookButton:hover, input[type="submit"]:hover {
+	color: #DDD;
+	background-color: #888;
+}
+
+#deleteBook, #modifyBook {
+	margin-top: 10px;
+	margin-left: 8px;
+	visibility: hidden;
+	opacity: 0;
+	transition: opacity 0.3s, background-color 0.2s;
+}
+
+#deleteBook:hover {
+	background-color: #FE2E2E;
+}
+
+.backToHidden {
+	transition: visibility 0.3s;
+}
+
+
+/* display is the ID of the pseudo-listbox that displays books. */
+#display {
+	table-layout: fixed;
+	width: 500px;
+	margin: 0;
+	padding: 0;
+	margin-top: 100px;
+	border-collapse: collapse;
+}
+#display tr, #display td, #display th {
+	border-bottom: 1px solid lightgrey;
+	padding: 0;
+}
+
+#display th {
+	text-transform: uppercase;
+	background-color: white;
+}
+
+#display tr:nth-child(even) {
+	background-color: #EFEFEF;
+}
+
+#display tr:hover {
+	background-color: #DDDDFF;
+}
+
+label {
+	height: 100%;
+	display: inline;
+}
+
+input[type="checkbox"].books {
+	display: none;
+}
+
+input[type="checkbox"].books:checked + label {
+	background-color: #3A778A;
+	color: white;
+	text-shadow: 1px 1px  2px black;
+}
+
+
+/* This span refers to the non-header pseudo-cells of the display table:
+ * They are spaced to simulated columns. The classes that immediately
+ * follow are each of the "columns". */
+.labelBooks {
+	height: 100%;
+	width: 100%;
+	display: inline-block;
+	vertical-align: top;
+	padding-top: 5px;
+	padding-bottom: 5px;
+}
+
+#display th.authorHead {
+	width: 28%;
+	text-align: left;
+	padding-left: 10px;
+}
+#display th.locationHead {
+	width: 28%;
+	text-align: left;
+	padding-left: 22px;
+}
+
+#display th.titleHead {
+	text-align: left;
+	padding-left: 20px;
+}
+
+#display th.readHead {
+	width: 50px;
+}
+
+.author {
+	display: inline-block;
+	width: 28%;
+	padding-left: 10px;
+	vertical-align: top;
+}
+
+.title {
+	display: inline-block;
+	width: 30%;
+	padding-left: 10px;
+	padding-right: 10px;
+	font-style: italic;
+	vertical-align: top;
+}
+
+.location {
+	display: inline-block;
+	width: 28%;
+	padding-left: 5px;
+	vertical-align: top;
+}
+
+.read {
+	display: inline-block;
+	vertical-align: middle;
+	text-align: center;
+}
+
+/* Form errors */
+.errorlist {
+	color: red;
+	list-style: none;
+	font-size: 90%;
+	line-height: 0;
+	position: relative;
+	left: 10px;
+	top: 5px;
+}
+
+.nav {
+	margin-top: -20px;
+	padding-top: 20px;
+	width: 500px;
+	position: fixed;
+	background-color: white;
+	box-shadow: 0px 4px 3px -3px rgba(120, 120, 120, 0.9);
+	padding-bottom: 20px;
+	z-index: 2;
+}
+
+#selectAll {
+	display: block;
+	margin-left: 510px;
+	width: 100%;
+	position: fixed;
+	top: 138px;
+	cursor: pointer;
+	text-align: left;
+}
+
+#deselectAll {
+	display: block;
+	margin-left: 510px;
+	width: 100%;
+	position: fixed;
+	top: 160px;
+	cursor: pointer;
+	text-align: left;
+}
