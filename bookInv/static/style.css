@@ -199,7 +199,6 @@ input[type="checkbox"].books:checked + label {
 #selectAll {
 	display: block;
 	margin-left: 510px;
-	width: 100%;
 	position: fixed;
 	top: 138px;
 	cursor: pointer;
@@ -209,7 +208,6 @@ input[type="checkbox"].books:checked + label {
 #deselectAll {
 	display: block;
 	margin-left: 510px;
-	width: 100%;
 	position: fixed;
 	top: 160px;
 	cursor: pointer;
