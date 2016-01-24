@@ -25,11 +25,12 @@ def index(request):
         })
 
 def modifyBook(request):
-    print(request.POST.getlist('selectedBooks'))
     if request.POST.get('deleteModify') == 'delete':
         return deleteBook(request)
     else:
-        return render(request, 'inventory/modify.html')
+        return render(request, 'inventory/modify.html', {
+            'bookToModify': Book.objects.get(id=request.POST.getlist('selectedBooks')[0]),
+            })
 
 def deleteBook(request):
     for bookId in request.POST.getlist('selectedBooks'):
