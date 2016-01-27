@@ -7,6 +7,9 @@
 		<LINK REL='stylesheet' TYPE='text/css' HREF='{% static 'style.css' %}'>
 	</HEAD>
 	<BODY>
-		{{ bookToModify.author }}
+		<form action="/modify/" method="POST"> {% csrf_token %}
+			{{ form.as_p }}
+			<input type="submit" value="Save">
+		</form>
 	</BODY>
 </HTML>

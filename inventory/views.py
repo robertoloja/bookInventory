@@ -2,7 +2,7 @@ from django.shortcuts import render
 from django.http import HttpResponseRedirect
 
 from .models import Book, Location
-from .forms import AddBookForm
+from .forms import AddBookForm, ModifyBookForm
 
 def index(request):
     books = Book.objects.all()
@@ -24,13 +24,27 @@ def index(request):
         'form': form,
         })
 
+
 def modifyBook(request):
     if request.POST.get('deleteModify') == 'delete':
         return deleteBook(request)
-    else:
+
+    elif request.POST.get('deleteModify') == 'modify':
+        book = Book.objects.get(id=request.POST.getlist('selectedBooks')[0])
+        print(book)
+        form = ModifyBookForm(instance=book)
+
         return render(request, 'inventory/modify.html', {
-            'bookToModify': Book.objects.get(id=request.POST.getlist('selectedBooks')[0]),
+            'book': book,
+            'form': form,
             })
+    else:
+        form = ModifyBookForm(request.POST)
+
+        if form.is_valid():
+            form.save()
+            return HttpResponseRedirect("/")
+
 
 def deleteBook(request):
     for bookId in request.POST.getlist('selectedBooks'):
