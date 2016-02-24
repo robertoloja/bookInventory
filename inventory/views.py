@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from django.http import HttpResponseRedirect
+from django.views.generic.edit import UpdateView
 
 from .models import Book, Location
 from .forms import AddBookForm, ModifyBookForm
@@ -26,24 +27,22 @@ def index(request):
 
 
 def modifyBook(request):
+    print(request.POST.get('deleteModify'))
     if request.POST.get('deleteModify') == 'delete':
         return deleteBook(request)
 
     elif request.POST.get('deleteModify') == 'modify':
-        book = Book.objects.get(id=request.POST.getlist('selectedBooks')[0])
-        print(book)
-        form = ModifyBookForm(instance=book)
+        url = '/savemod/' + request.POST.getlist('selectedBooks')[0] + '/'
+        return HttpResponseRedirect(url)
 
-        return render(request, 'inventory/modify.html', {
-            'book': book,
-            'form': form,
-            })
     else:
-        form = ModifyBookForm(request.POST)
+        return HttpResponseRedirect("/")
 
-        if form.is_valid():
-            form.save()
-            return HttpResponseRedirect("/")
+class UpdateBook(UpdateView):
+    model = Book
+    form_class = ModifyBookForm
+    template_name = 'inventory/modify.html'
+    success_url = '/'
 
 
 def deleteBook(request):

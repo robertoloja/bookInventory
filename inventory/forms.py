@@ -4,9 +4,9 @@ from .models import Location, Book
 class AddBookForm(ModelForm):
     class Meta:
         model = Book
-        fields = ['author', 'title', 'read', 'location']
+        fields = ['author', 'title', 'comments', 'location']
 
 class ModifyBookForm(ModelForm):
     class Meta:
         model = Book
-        fields = ['author', 'title', 'location', 'read', 'id']
+        fields = ['author', 'title', 'location', 'comments', 'id']

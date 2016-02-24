@@ -16,9 +16,11 @@ Including another URLconf
 from django.conf.urls import url, include
 from django.contrib import admin
 from inventory import views
+from inventory.views import UpdateBook
 
 urlpatterns = [
     url(r'^$', views.index, name='index'),
     url(r'^modify/', views.modifyBook, name='modifyBook'),
+    url(r'^savemod/(?P<pk>[\w-]+)/$', UpdateBook.as_view(), name='update_book'),
     url(r'^admin/', admin.site.urls),
 ]
