@@ -52,6 +52,12 @@ def deleteBook(request):
     return HttpResponseRedirect("/")
 
 
+def deleteLocation(request):
+    for location in request.POST.getlist('selectedLocations'):
+        Location.objects.get(id=location).delete()
+    return HttpResponseRedirect("/modLocations/")
+
+
 def modifyLocations(request):
     locations = Location.objects.all()
 
@@ -60,7 +66,7 @@ def modifyLocations(request):
 
         if form.is_valid():
             form.save()
-            return HttpResponseRedirect("/")
+            return HttpResponseRedirect("inventory/modLoc.html")
 
     else:
         form = AddLocForm()

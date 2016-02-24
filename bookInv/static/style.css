@@ -52,7 +52,7 @@ body {
 	background-color: #888;
 }
 
-#deleteBook, #modifyBook {
+#deleteBook, #modifyBook, #submitDeleteLocation {
 	margin-top: 10px;
 	margin-left: 8px;
 	visibility: hidden;
@@ -60,7 +60,7 @@ body {
 	transition: opacity 0.3s, background-color 0.2s;
 }
 
-#deleteBook:hover {
+#deleteBook:hover, #deleteLocation:hover {
 	background-color: #FE2E2E;
 }
 

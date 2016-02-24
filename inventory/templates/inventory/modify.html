@@ -3,10 +3,11 @@
 
 <HTML>
 	<HEAD>
-		<TITLE></TITLE>
+		<TITLE>Modify Book</TITLE>
 		<LINK REL='stylesheet' TYPE='text/css' HREF='{% static 'style.css' %}'>
 	</HEAD>
 	<BODY>
+		<a href="/" id="back" class="bookButton">back</a>
 		<form method="post" action=""> {% csrf_token %}
 			{{ form.as_p }}
 			<input type="submit" value="Save">

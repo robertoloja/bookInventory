@@ -5,20 +5,29 @@
 	<HEAD>
 		<TITLE>Add Location</TITLE>
 		<LINK REL='stylesheet' TYPE='text/css' HREF='{% static 'style.css' %}'>
+		<SCRIPT src="{% static 'functions.js' %}"></SCRIPT>
 	</HEAD>
 	<BODY>
-		<table>
+		<a href="/" id="back" class="bookButton">back</a>
+		<form id="deleteLocations" method="post" action="/deleteLocation/"> {% csrf_token %}
+		<table id="display">
 			<tr>
-				<th> Current Locations </th>
+				<th style="width: 100%;"> Current Locations </th>
 			</tr>
 
 		{% for location in locations %}
-			<tr>
-				<td>{{ location.name|capfirst }}</td>
-			</tr>
+		<tr>
+			<td colspan="4"><input name="selectedLocations" type="checkbox" id="{{ location.name }}" value="{{ location.id }}" class="books" onclick="bookClicked()"> 
+				<label class="labelBooks" for="{{ location.name }}"> 
+					<span class="location">{{ location.name }}</span>
+				</label>
+			</td>
+		</tr>
 		{% endfor %}
 
 		</table>
+		<input type="submit" name="deleteLocation" value="delete" id="submitDeleteLocation">
+		</form>
 
 		<br>
 		<br>

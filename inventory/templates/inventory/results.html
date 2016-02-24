@@ -5,8 +5,15 @@
 	<HEAD>
 		<TITLE></TITLE>
 		<LINK REL='stylesheet' TYPE='text/css' HREF='{% static 'style.css' %}'>
+		<SCRIPT src="{% static 'functions.js' %}"></SCRIPT>
 	</HEAD>
 	<BODY>
+		<a href="/" id="back" class="bookButton">back</a>
+
+		<a id="selectAll" onclick="selectAllBooks()">Select All</a>
+		<a id="deselectAll" onclick="deselectAllBooks()">Deselect All</a>
+		<form id="modifyBooks" method="post" action="/modify/"> {% csrf_token %}
+
 		<table id="display">
 			<tr>
 				<th class="authorHead">Author</th>
@@ -26,5 +33,10 @@
 	</tr>
 	{% endfor %}
 		</table>
+		<input type="submit" name="deleteModify" value="modify" id="submitModify" style="display: none;">
+		<input type="submit" name="deleteModify" value="delete" id="submitDelete" style="display: none;">
+		</form>
+		<a class="bookButton" id="deleteBook" onclick="deleteBook()">Delete</a>
+		<a class="bookButton" id="modifyBook" onclick="modifyBook()">View / Modify</a>
 	</BODY>
 </HTML>
