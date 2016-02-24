@@ -4,6 +4,8 @@ from django.views.generic.edit import UpdateView
 
 from .models import Book, Location
 from .forms import AddBookForm, ModifyBookForm, AddLocForm
+from .utils import generic_search
+
 
 def index(request):
     books = Book.objects.all()
@@ -37,6 +39,7 @@ def modifyBook(request):
     else:
         return HttpResponseRedirect("/")
 
+
 class UpdateBook(UpdateView):
     model = Book
     form_class = ModifyBookForm
@@ -48,6 +51,7 @@ def deleteBook(request):
     for bookId in request.POST.getlist('selectedBooks'):
         Book.objects.get(id=bookId).delete()
     return HttpResponseRedirect("/")
+
 
 def modifyLocations(request):
     locations = Location.objects.all()
@@ -65,4 +69,34 @@ def modifyLocations(request):
     return render(request, 'inventory/modLoc.html', {
         'locations': locations,
         'form': form,
+        })
+
+def search(request):
+    query = request.GET['q'].split(' ')
+    query = map(lambda x: x.lower(), query)
+
+    objects = Book.objects.all()
+
+    def matches(thing):
+        fields = []
+        for i in thing.author.lower().split(' '):
+            fields.append(i)
+
+        for i in thing.title.lower().split(' '):
+            fields.append(i)
+
+        for i in thing.location.name.lower().split(' '):
+            fields.append(i)
+
+        for i in thing.comments.lower().split(' '):
+            fields.append(i)
+
+        for word in query:
+            if word in fields:
+                return True
+
+    objects = filter(matches, objects)
+
+    return render(request, 'inventory/results.html', {
+        'books': objects,
         })

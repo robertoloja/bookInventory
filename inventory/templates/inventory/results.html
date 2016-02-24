@@ -1,0 +1,30 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+
+<HTML>
+	<HEAD>
+		<TITLE></TITLE>
+		<LINK REL='stylesheet' TYPE='text/css' HREF='{% static 'style.css' %}'>
+	</HEAD>
+	<BODY>
+		<table id="display">
+			<tr>
+				<th class="authorHead">Author</th>
+				<th class="titleHead">Title</th>
+				<th class="locationHead">Location</th>
+			</tr>
+
+	{% for book in books %}
+	<tr>
+		<td colspan="4"><input name="selectedBooks" type="checkbox" id="{{ book.id }}" value="{{ book.id }}" class="books" onclick="bookClicked()"> 
+			<label class="labelBooks" for="{{ book.id }}" title="{{ book.comments }}"> 
+				<span class="author">{{ book.author|capfirst }}</span>
+				<span class="title">{{ book.title|capfirst }}</span>
+				<span class="location">{{ book.location|capfirst }}</span>
+			</label>
+		</td>
+	</tr>
+	{% endfor %}
+		</table>
+	</BODY>
+</HTML>
