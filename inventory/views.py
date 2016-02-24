@@ -3,7 +3,7 @@ from django.http import HttpResponseRedirect
 from django.views.generic.edit import UpdateView
 
 from .models import Book, Location
-from .forms import AddBookForm, ModifyBookForm
+from .forms import AddBookForm, ModifyBookForm, AddLocForm
 
 def index(request):
     books = Book.objects.all()
@@ -27,7 +27,6 @@ def index(request):
 
 
 def modifyBook(request):
-    print(request.POST.get('deleteModify'))
     if request.POST.get('deleteModify') == 'delete':
         return deleteBook(request)
 
@@ -49,3 +48,21 @@ def deleteBook(request):
     for bookId in request.POST.getlist('selectedBooks'):
         Book.objects.get(id=bookId).delete()
     return HttpResponseRedirect("/")
+
+def modifyLocations(request):
+    locations = Location.objects.all()
+
+    if request.method == 'POST':
+        form = AddLocForm(request.POST)
+
+        if form.is_valid():
+            form.save()
+            return HttpResponseRedirect("/")
+
+    else:
+        form = AddLocForm()
+
+    return render(request, 'inventory/modLoc.html', {
+        'locations': locations,
+        'form': form,
+        })

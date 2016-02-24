@@ -10,3 +10,8 @@ class ModifyBookForm(ModelForm):
     class Meta:
         model = Book
         fields = ['author', 'title', 'location', 'comments', 'id']
+
+class AddLocForm(ModelForm):
+    class Meta:
+        model = Location
+        fields = ['name']

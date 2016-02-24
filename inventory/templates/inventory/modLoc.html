@@ -1,0 +1,31 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+
+<HTML>
+	<HEAD>
+		<TITLE>Add Location</TITLE>
+		<LINK REL='stylesheet' TYPE='text/css' HREF='{% static 'style.css' %}'>
+	</HEAD>
+	<BODY>
+		<table>
+			<tr>
+				<th> Current Locations </th>
+			</tr>
+
+		{% for location in locations %}
+			<tr>
+				<td>{{ location.name|capfirst }}</td>
+			</tr>
+		{% endfor %}
+
+		</table>
+
+		<br>
+		<br>
+		<b>New Location</b>
+		<form method="post" action=""> {% csrf_token %}
+			{{ form.as_p }}
+			<input type="submit" value="Save">
+		</form>
+	</BODY>
+</HTML>

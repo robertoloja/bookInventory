@@ -21,6 +21,7 @@ from inventory.views import UpdateBook
 urlpatterns = [
     url(r'^$', views.index, name='index'),
     url(r'^modify/', views.modifyBook, name='modifyBook'),
+    url(r'^modLocations/', views.modifyLocations, name='modifyLocations'),
     url(r'^savemod/(?P<pk>[\w-]+)/$', UpdateBook.as_view(), name='update_book'),
     url(r'^admin/', admin.site.urls),
 ]

@@ -14,7 +14,7 @@
 			 revert to being off-page on page reload. -->
 		<div id="addBookForm" 
 				{% if form.errors %}
-					style="top: 10px; height: 225px;"
+					style="top: 10px; height: 385px;"
 				{% endif %} 
 				>
 			<span id="close" onclick="closeBookForm()" title="Close"
@@ -23,6 +23,7 @@
 			<form method="post" action=""> {% csrf_token %}
 				{{ form.as_p }}
 				<input type="submit" value="Add Book">
+				<a href="/modLocations/" id="addLocation" class="bookButton">Add Location</a>
 			</form>
 		</div>
 
@@ -31,8 +32,8 @@
 				<a class="bookButton" onclick="addBook()">ADD BOOK</a>
 			</td>
 			<td>
-				<form action="">
-					<input type="text" name="searchBox" 
+				<form method="get" action="/search/">
+					<input type="text" name="q" id="id_q"
 					 placeholder="Title, author, etc..." required>
 					<input type="submit" name="submit" id="searchButton" value="Search">
 				</form>
@@ -40,7 +41,7 @@
 			<tr><td style="width: 40%; padding-left: 10%;">
 				<a class="bookButton" id="deleteBook" onclick="deleteBook()">Delete</a>
 			</td><td>
-				<a class="bookButton" id="modifyBook" onclick="modifyBook()">Modify</a>
+				<a class="bookButton" id="modifyBook" onclick="modifyBook()">View / Modify</a>
 			</td></tr>
 		</table>
 

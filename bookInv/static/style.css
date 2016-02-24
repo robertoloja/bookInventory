@@ -6,8 +6,8 @@
 
 /* Add Book form */
 #addBookForm {
-	height: 180px;
-	width: 300px;
+	height: 340px;
+	width: 340px;
 	background-color: rgba(245, 245, 245, 0.98);
 	border-radius: 10px;
 	position: fixed;
@@ -68,6 +68,11 @@ body {
 	transition: visibility 0.3s;
 }
 
+#addLocation {
+	background-color: lightblue;
+	position: relative;
+	left: 110px;
+}
 
 /* display is the ID of the pseudo-listbox that displays books. */
 #display {
@@ -131,18 +136,14 @@ input[type="checkbox"].books:checked + label {
 	padding-left: 10px;
 }
 #display th.locationHead {
-	width: 28%;
 	text-align: left;
-	padding-left: 22px;
+	padding-left: 42px;
 }
 
 #display th.titleHead {
 	text-align: left;
+	width: 35%;
 	padding-left: 20px;
-}
-
-#display th.readHead {
-	width: 50px;
 }
 
 .author {
@@ -154,7 +155,7 @@ input[type="checkbox"].books:checked + label {
 
 .title {
 	display: inline-block;
-	width: 30%;
+	width: 35%;
 	padding-left: 10px;
 	padding-right: 10px;
 	font-style: italic;
@@ -166,12 +167,6 @@ input[type="checkbox"].books:checked + label {
 	width: 28%;
 	padding-left: 5px;
 	vertical-align: top;
-}
-
-.read {
-	display: inline-block;
-	vertical-align: middle;
-	text-align: center;
 }
 
 /* Form errors */
