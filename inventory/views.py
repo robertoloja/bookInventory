@@ -4,7 +4,6 @@ from django.views.generic.edit import UpdateView
 
 from .models import Book, Location
 from .forms import AddBookForm, ModifyBookForm, AddLocForm
-from .utils import generic_search
 
 
 def index(request):
