@@ -30,6 +30,7 @@ def index(request):
         })
 
 
+@xframe_options_exempt
 def modifyBook(request):
     if request.POST.get('deleteModify') == 'delete':
         return deleteBook(request)
@@ -42,6 +43,7 @@ def modifyBook(request):
         return HttpResponseRedirect("/")
 
 
+@xframe_options_exempt
 class UpdateBook(UpdateView):
     model = Book
     form_class = ModifyBookForm
@@ -49,18 +51,21 @@ class UpdateBook(UpdateView):
     success_url = '/'
 
 
+@xframe_options_exempt
 def deleteBook(request):
     for bookId in request.POST.getlist('selectedBooks'):
         Book.objects.get(id=bookId).delete()
     return HttpResponseRedirect("/")
 
 
+@xframe_options_exempt
 def deleteLocation(request):
     for location in request.POST.getlist('selectedLocations'):
         Location.objects.get(id=location).delete()
     return HttpResponseRedirect("/modLocations/")
 
 
+@xframe_options_exempt
 def modifyLocations(request):
     locations = Location.objects.all()
 
@@ -79,6 +84,7 @@ def modifyLocations(request):
         'form': form,
         })
 
+@xframe_options_exempt
 def search(request):
     query = request.GET['q'].split(' ')
     query = map(lambda x: x.lower(), query)
