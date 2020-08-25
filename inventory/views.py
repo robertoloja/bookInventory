@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponseRedirect
 from django.views.generic.edit import UpdateView
+from django.utils.decorators import method_decorator
 
 from .models import Book, Location
 from .forms import AddBookForm, ModifyBookForm, AddLocForm
