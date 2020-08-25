@@ -6,6 +6,7 @@ from .models import Book, Location
 from .forms import AddBookForm, ModifyBookForm, AddLocForm
 
 
+@method_decorator(xframe_options_exempt):
 def index(request):
     books = Book.objects.all()
     locations = Location.objects.all()
