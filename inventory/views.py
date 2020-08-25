@@ -1,13 +1,14 @@
 from django.shortcuts import render
 from django.http import HttpResponseRedirect
 from django.views.generic.edit import UpdateView
-from django.utils.decorators import method_decorator
+from django.views.decorators.clickjacking import xframe_options_exempt
 
 from .models import Book, Location
 from .forms import AddBookForm, ModifyBookForm, AddLocForm
 
 
-@method_decorator(xframe_options_exempt):
+
+@xframe_options_exempt
 def index(request):
     books = Book.objects.all()
     locations = Location.objects.all()
