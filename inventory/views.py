@@ -43,7 +43,6 @@ def modifyBook(request):
         return HttpResponseRedirect("/")
 
 
-@xframe_options_exempt
 class UpdateBook(UpdateView):
     model = Book
     form_class = ModifyBookForm
